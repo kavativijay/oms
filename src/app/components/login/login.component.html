@@ -1,0 +1,89 @@
+<div class="wrapper wrapper-full-page" >
+  <!--  -->
+  <div class="page-header login-page header-filter" style="background-image: url('../../assets/images/order.jpg'); background-size: cover; background-position: top center;" filter-color="black" >
+    <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+    <div class="container">
+      <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
+        <form class="form" [formGroup]="formuser">
+          <div class="card card-login">
+            <div class="card-header card-header-rose text-center">
+              <h4 class="card-title">Login</h4>
+            </div>
+            <div class="card-body ">
+
+              <span class="bmd-form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">email</i>
+                    </span>
+                  </div>
+                  <input formControlName="username" required type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" placeholder="Email...">
+               
+                </div>
+                <mat-error style="padding-left:50px" *ngIf="formuser.get('username').touched && formuser.get('username').hasError('required')">E-mail is Required</mat-error>
+                <mat-error style="padding-left:50px" *ngIf="formuser.get('username').touched && formuser.get('username').hasError('pattern')">E-mail Badly Formated</mat-error>
+              </span>
+              <span class="bmd-form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Password..." formControlName="password" required >
+                </div>
+                <mat-error style="padding-left:50px" *ngIf="formuser.get('password').touched && formuser.get('password').hasError('required')">Password is Required</mat-error>
+              </span>
+              
+            </div>
+            <div class="forgotpassword">
+              <a  data-toggle="modal" data-target="#forgotModal" style = "padding:0px; margin:0px;font-size:10px !important" class="btn btn-success btn-link btn-lg">Forgot Password<i style="font-size: 17px;" class="material-icons">help_outline</i></a>
+            </div>
+            <div class="card-footer justify-content-center">
+              <button (click)="signIn()" [disabled]="formuser.invalid" class="btn btn-success btn-link btn-lg">Sign In</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal fade" id="forgotModal" tabindex="-1" role="">
+      <div class="modal-dialog modal-login" role="document">
+          <div class="modal-content">
+              <div class="card card-signup card-plain">
+                  <div class="modal-header">
+                    <div class="card-header card-header-rose text-center">
+                      <button #close type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="material-icons">clear</i>
+                      </button>
+  
+                      <h4 class="card-title">Forgot Password?</h4>
+                      
+                    </div>
+                  </div>
+                  <div class="modal-body">
+                      <form class="form" [formGroup]="forgotPassword">
+                          <p class="description text-left" style="margin-left:10px">Please enter your email.Reset link will be send to email.</p>
+                          <div class="card-body">
+                              <div class="form-group bmd-form-group">
+                                  <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <div class="input-group-text"><i class="material-icons">email</i></div>
+                                    </div>
+                                    <input type="text" class="form-control" formControlName="forgotemail" required  placeholder="Email...">
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer justify-content-center">
+                      <button (click)="forgot_click()" [disabled]="forgotPassword.invalid" class="btn btn-yellow btn-link btn-lg">Send</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

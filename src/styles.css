@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+
+.success {
+  background-color: #55b559;
+  color: #ffffff;
+}
+.failure {
+  background-color: #f55145;
+  color: #ffffff;
+}
+
+
+ .Hand:hover{
+  cursor: pointer;
+}

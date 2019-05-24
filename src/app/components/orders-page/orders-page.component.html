@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-warning card-header-icon">
+          <div class="card-icon">
+            <img src="assets/images/tracking.svg" alt="Orders"><img>
+          </div>
+          <h4 class="card-title"><strong><b>Orders Page</b></strong> </h4>
+
+          <div class="float-right" (click)="addOrder()"> 
+            <i class="material-icons" style="color:black; vertical-align: middle; cursor: pointer;">add_box</i>
+            <label style="cursor: pointer"> New Order</label>
+          </div>
+        </div> 
+
+          <div class="card-body" >
+            <div class="material-datatables">
+                <div *ngIf="allOrders?.length > 0;then tableItems4 else noItems4;" ></div>
+                <ng-template #tableItems4>
+              <table datatable class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Order Number</th>
+                    <th>order Item</th>
+                    <th>Ordered Date</th>
+                    <th>customerName</th>
+                    <th>customerAddress</th>
+                    <th>customerPhone</th>
+                    <th>Amount</th>
+                    <th data-orderable="false" class="text-right">Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let order of allOrders">
+                    <td>{{order?.orderNumber}}</td>
+                    <td>{{order?.orderName}}</td>
+                    <td *ngIf="order?.orderDueDate !=null">{{order?.orderDueDate.seconds * 1000 | date:'MM/dd/yyyy' }}</td>
+                    <td *ngIf="order?.orderDueDate ==null">N/A</td>
+
+                    <td>{{order?.customerName}}</td>
+                    <td>{{order?.customerAddress}}</td>
+
+                    <td>{{order?.customerPhone}}</td>
+                    <td>{{order?.orderTotal}}</td>
+
+                    <td class="text-right">
+                      <a (click)="viewOrder(order)" data-toggle="tooltip"  data-placement="top" title="View" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">visibility</i></a>
+                      <a (click)="editOrder(order)" data-toggle="tooltip"  data-placement="top" title="Edit" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
+                      <a (click)="deleteOrder(order)" data-toggle="tooltip"  data-placement="top" title="Delete" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+            <ng-template #noItems4>
+                <strong><b>No Orders to Show</b></strong>
+          </ng-template>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>   
+</div>

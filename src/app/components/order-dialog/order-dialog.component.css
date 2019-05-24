@@ -1,0 +1,11 @@
+.cross:hover{
+    color:red!important; 
+ }
+
+ ::ng-deep.mat-dialog-container {
+background: none !important;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+}
+
