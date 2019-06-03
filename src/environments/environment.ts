@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase:{
-    apiKey: "AIzaSyD3QCEFy9tzpQXxrXUsC44BT1wQE1IahbU",
-    authDomain: "oms-orders.firebaseapp.com",
-    databaseURL: "https://oms-orders.firebaseio.com",
-    projectId: "oms-orders",
-    storageBucket: "oms-orders.appspot.com",
-    messagingSenderId: "646121828387",
-    appId: "1:646121828387:web:1260656a23346a2e"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
   },
 };
 
